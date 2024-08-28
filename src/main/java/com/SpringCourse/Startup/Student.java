@@ -1,0 +1,69 @@
+package com.SpringCourse.Startup;
+
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+
+@Component
+public class Student {
+    private int id;
+    private String name;
+    private LocalDate birthdate;
+    private double mark;
+    private int age;
+
+   public Student(){
+        System.out.println("Student Constructor");
+    }
+
+//    public Student(int id, String name, LocalDate birthdate, double mark, int age) {
+//        this.id = id;
+//        this.name = name;
+//        this.birthdate = birthdate;
+//        this.mark = mark;
+//        this.age = age;
+//    }
+//    public Student(int id){
+//
+//    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public double getMark() {
+        return mark;
+    }
+
+    public void setMark(double mark) {
+        this.mark = mark;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
