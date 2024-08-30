@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
-@Component
+//@Component
 public class Student {
     private int id;
     private String name;
@@ -16,16 +16,13 @@ public class Student {
         System.out.println("Student Constructor");
     }
 
-//    public Student(int id, String name, LocalDate birthdate, double mark, int age) {
-//        this.id = id;
-//        this.name = name;
-//        this.birthdate = birthdate;
-//        this.mark = mark;
-//        this.age = age;
-//    }
-//    public Student(int id){
-//
-//    }
+    public Student(int id, String name, LocalDate birthdate, double mark, int age) {
+        this.id = id;
+        this.name = name;
+        this.birthdate = birthdate;
+        this.mark = mark;
+        this.age = age;
+    }
 
     public int getId() {
         return id;
