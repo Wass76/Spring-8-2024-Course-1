@@ -1,11 +1,20 @@
 package com.SpringCourse.Startup;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
-//@Component
+@Entity
 public class Student {
+    @Id
+    @GeneratedValue(
+            generator = "student_id",
+            strategy = GenerationType.SEQUENCE
+    )
     private int id;
     private String name;
     private LocalDate birthdate;
