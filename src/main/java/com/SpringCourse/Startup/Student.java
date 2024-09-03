@@ -1,12 +1,10 @@
 package com.SpringCourse.Startup;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -15,11 +13,30 @@ public class Student {
             generator = "student_id",
             strategy = GenerationType.SEQUENCE
     )
+    @SequenceGenerator(
+            name = "student_id",
+            allocationSize = 1,
+            sequenceName = "student_id"
+    )
     private int id;
     private String name;
     private LocalDate birthdate;
     private double mark;
-    private int age;
+
+    @OneToOne
+    private Wallet wallet;
+
+//    @OneToMany
+//    private List<Attendance> attendanceList;
+
+    @ManyToMany()
+    @JoinTable(name = "course_student",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns =@JoinColumn(name = "course_id")
+    )
+    private List<Course> courseList;
+
+
 
    public Student(){
         System.out.println("Student Constructor");
@@ -30,7 +47,6 @@ public class Student {
         this.name = name;
         this.birthdate = birthdate;
         this.mark = mark;
-        this.age = age;
     }
 
     public int getId() {
@@ -63,13 +79,5 @@ public class Student {
 
     public void setMark(double mark) {
         this.mark = mark;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 }
