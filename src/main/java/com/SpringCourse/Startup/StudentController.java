@@ -29,7 +29,7 @@ public class StudentController {
 
     @GetMapping("by-name")
     public List<Student> getStudentByName(String name){
-        return studentService.getStudentByName(name);
+        return studentService.getStudentByFirstName(name);
     }
 
     @DeleteMapping

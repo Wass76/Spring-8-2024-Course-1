@@ -17,8 +17,8 @@ public class StudentService {
     public List<Student> getAll(){
         return studentRepository.findAll();
     }
-    public List<Student> getStudentByName(String name){
-        return studentRepository.findByName(name).orElse(null);
+    public List<Student> getStudentByFirstName(String name){
+        return studentRepository.findByFirstName(name).orElse(null);
     }
     public Student getById(Integer id){
         return studentRepository.findById(id).orElse(null);
