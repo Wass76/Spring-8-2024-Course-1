@@ -9,11 +9,9 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "student")
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 
 public class Student {
 
@@ -25,7 +23,7 @@ public class Student {
     )
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "student_id")
     @Column(name = "id")
-    private int id;
+    private Integer id;
     @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
     @Column(name = "last_name")

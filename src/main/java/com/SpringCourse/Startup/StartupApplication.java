@@ -18,10 +18,10 @@ import java.util.Map;
 @RequestMapping("/hello")
 public class StartupApplication {
 
-	@Autowired
-	Student student ;
-	@Autowired
-	Student student2 ;
+//	@Autowired
+//	Student student ;
+//	@Autowired
+//	Student student2 ;
 
 //	@Value("${")
 //	private String courseLevel;
@@ -30,8 +30,8 @@ public class StartupApplication {
 		SpringApplication.run(StartupApplication.class, args);
 	}
 
-	@GetMapping()
-	public List<Student>  hello() {
+//	@GetMapping()
+//	public List<Student>  hello() {
 //		Map<String, String> map = new HashMap<>();
 //		map.put("name", "Java");
 //		map.put("surname", "Spring");
@@ -44,18 +44,18 @@ public class StartupApplication {
 //				50,
 //				1
 //		);
-		student.setId(1);
-		student.setMark(50);
-		student.setAge(1);
-		student.setBirthdate(LocalDate.now());
-		student.setName("Wassem");
+//		student.setId(1);
+//		student.setMark(50);
+//		student.setAge(1);
+//		student.setBirthdate(LocalDate.now());
+//		student.setName("Wassem");
 
-		student2.setId(2);
-		student2.setMark(80);
-		student2.setAge(25);
-		student2.setBirthdate(LocalDate.now());
-		student2.setName("Tammam");
-		return List.of( student , student2);
-	}
+//		student2.setId(2);
+//		student2.setMark(80);
+//		student2.setAge(25);
+//		student2.setBirthdate(LocalDate.now());
+//		student2.setName("Tammam");
+//		return List.of( student , student2);
+//	}
 
 }
