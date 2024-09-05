@@ -1,6 +1,7 @@
 package com.SpringCourse.Startup;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,17 +14,17 @@ public class StudentController {
     private StudentService studentService;
 
     @GetMapping("all-students")
-    public List<Student> getAllStudent(){
+    public ResponseEntity getAllStudent(){
         return studentService.getAll();
     }
 
     @PostMapping
-    public Student addStudent(Student student){
-        return studentService.save(student);
+    public ResponseEntity addStudent(@RequestBody StudentRequest request){
+        return studentService.save(request);
     }
 
-    @GetMapping("by-id")
-    public Student getStudentById(int id){
+    @GetMapping("by-id/{id}")
+    public ResponseEntity getStudentById(@PathVariable int id){
         return studentService.getById(id);
     }
 
