@@ -32,8 +32,9 @@ public class StudentService {
     public  Student updateStudent(Student student){
         Student s1 = studentRepository.findById(student.getId()).orElse(null);
         if(s1 != null){
-            s1.setBirthdate(student.getBirthdate());
-            s1.setName(student.getName());
+            s1.setBirthday(student.getBirthday());
+            s1.setFirstName(s1.getFirstName());
+            s1.setLastName(s1.getLastName());
             s1.setMark(student.getMark());
             s1.setAge(student.getAge());
             studentRepository.save(s1);

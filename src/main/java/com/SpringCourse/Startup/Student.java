@@ -1,69 +1,38 @@
 package com.SpringCourse.Startup;
 
-import org.springframework.stereotype.Component;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Component
+@Entity
+@Table(name = "student")
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
+
 public class Student {
+
+    @Id
+    @SequenceGenerator(
+            name = "student_id",
+            sequenceName = "student_id",
+            allocationSize = 1
+    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "student_id")
+    @Column(name = "id")
     private int id;
-    private String name;
-    private LocalDate birthdate;
-    private double mark;
+    @Column(name = "first_name", nullable = false, length = 50)
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
+    private LocalDate birthday;
     private int age;
+    private int mark;
 
-   public Student(){
-        System.out.println("Student Constructor");
-    }
 
-//    public Student(int id, String name, LocalDate birthdate, double mark, int age) {
-//        this.id = id;
-//        this.name = name;
-//        this.birthdate = birthdate;
-//        this.mark = mark;
-//        this.age = age;
-//    }
-//    public Student(int id){
-//
-//    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDate getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(LocalDate birthdate) {
-        this.birthdate = birthdate;
-    }
-
-    public double getMark() {
-        return mark;
-    }
-
-    public void setMark(double mark) {
-        this.mark = mark;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 }
