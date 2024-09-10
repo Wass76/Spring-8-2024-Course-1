@@ -1,7 +1,6 @@
 package com.SpringCourse.Startup;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -13,9 +12,10 @@ import java.time.LocalDate;
 public class StudentRequest {
 
     @NotBlank(message = "first name must not be blank")
-    @Length(max = 10,min=2)
+//    @Length(max = 10,min=2)
+    @Size(message = "should be between 2 and 10 chars"  ,max = 10, min = 2)
     private String firstName;
-    @NotNull(message = "last name must not be null")
+    @NotBlank(message = "last name must not be null")
     private String lastName;
     @NotNull(message = "birthday must not be null")
     private LocalDate birthday;

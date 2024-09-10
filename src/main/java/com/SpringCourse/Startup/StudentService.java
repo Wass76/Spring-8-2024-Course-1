@@ -7,6 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.xml.validation.Validator;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +20,10 @@ public class StudentService {
     private StudentRepository studentRepository;
 
 
-    public ResponseEntity<?> save(StudentRequest request){
+    public ResponseEntity<?> save(StudentRequest request)  {
 
+
+        if(request.getFirstName().length()>5) throw new MyException("wrong length");
         Student student = Student.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())

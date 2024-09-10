@@ -19,7 +19,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity addStudent(@RequestBody StudentRequest request){
+    public ResponseEntity addStudent(@RequestBody StudentRequest request)  {
         return studentService.save(request);
     }
 
