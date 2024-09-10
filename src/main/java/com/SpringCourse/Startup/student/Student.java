@@ -1,5 +1,7 @@
-package com.SpringCourse.Startup;
+package com.SpringCourse.Startup.student;
 
+import com.SpringCourse.Startup.course.Course;
+import com.SpringCourse.Startup.wallet.Wallet;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

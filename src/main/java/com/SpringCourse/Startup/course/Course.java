@@ -1,9 +1,8 @@
-package com.SpringCourse.Startup;
+package com.SpringCourse.Startup.course;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 public class Course {

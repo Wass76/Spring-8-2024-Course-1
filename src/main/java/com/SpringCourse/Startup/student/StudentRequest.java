@@ -1,8 +1,7 @@
-package com.SpringCourse.Startup;
+package com.SpringCourse.Startup.student;
 
 import jakarta.validation.constraints.*;
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDate;
 @Data

@@ -1,4 +1,4 @@
-package com.SpringCourse.Startup;
+package com.SpringCourse.Startup.student;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

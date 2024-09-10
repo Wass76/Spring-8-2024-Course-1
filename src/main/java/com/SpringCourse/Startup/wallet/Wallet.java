@@ -1,4 +1,4 @@
-package com.SpringCourse.Startup;
+package com.SpringCourse.Startup.wallet;
 
 import jakarta.persistence.*;
 

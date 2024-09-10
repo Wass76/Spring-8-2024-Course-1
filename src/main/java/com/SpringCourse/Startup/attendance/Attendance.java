@@ -1,9 +1,9 @@
-package com.SpringCourse.Startup;
+package com.SpringCourse.Startup.attendance;
 
+import com.SpringCourse.Startup.student.Student;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class Attendance {

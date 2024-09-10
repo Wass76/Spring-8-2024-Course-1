@@ -1,4 +1,4 @@
-package com.SpringCourse.Startup;
+package com.SpringCourse.Startup.exception;
 
 public class MyException extends RuntimeException {
 
