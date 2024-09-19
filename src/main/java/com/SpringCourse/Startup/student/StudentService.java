@@ -1,5 +1,7 @@
 package com.SpringCourse.Startup.student;
 
+import com.SpringCourse.Startup.ExceptionPackage.NameException;
+import com.SpringCourse.Startup.ExceptionPackage.RequestException;
 import com.SpringCourse.Startup.exception.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,8 +20,14 @@ public class StudentService {
 
     public ResponseEntity<?> save(StudentRequest request)  {
 
+        String firstName = request.getFirstName();
+        if(firstName.length()>5) throw new NameException("wrong length");
+        for(int i =0; i<firstName.length();i++){
+            if(firstName.charAt(i)<97)
+                throw new NameException("there is a capital letter");
+        }
 
-        if(request.getFirstName().length()>5) throw new MyException("wrong length");
+
         Student student = Student.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
@@ -56,13 +64,13 @@ public class StudentService {
         return ResponseEntity.status(HttpStatus.OK).body(responses);
     }
     public List<Student> getStudentByFirstName(String name){
-        return studentRepository.findByFirstName(name).orElse(null);
+        return studentRepository.findByFirstName(name).orElseThrow(()->new RequestException("No student found"));
     }
     public ResponseEntity getById(Integer id){
-        Student student  = studentRepository.findById(id).orElse(null);
-        if(student == null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found");
-        }
+        Student student  = studentRepository.findById(id).orElseThrow(
+                ()-> new RequestException("student not found")
+        );
+
         StudentResponse response = StudentResponse.builder()
                 .id(student.getId())
                 .firstName(student.getFirstName())
@@ -75,21 +83,25 @@ public class StudentService {
     }
 
     public void deleteById(Integer id){
-        Student student = studentRepository.findById(id).orElse(null);
+        Student student = studentRepository.findById(id).orElseThrow(()-> new RequestException("student not found"));
         if(student != null){
             studentRepository.deleteById(id);
         }
     }
     public  Student updateStudent(Student student){
-        Student s1 = studentRepository.findById(student.getId()).orElse(null);
-        if(s1 != null){
-            s1.setBirthday(student.getBirthday());
-            s1.setFirstName(s1.getFirstName());
-            s1.setLastName(s1.getLastName());
-            s1.setMark(student.getMark());
-            s1.setAge(student.getAge());
-            studentRepository.save(s1);
+        Student s1 = studentRepository.findById(student.getId()).orElseThrow(()-> new RequestException("student not found"));
+        s1.setBirthday(student.getBirthday());
+        String firstName = student.getFirstName();
+        if(firstName.length()>5) throw new NameException("wrong length");
+        for(int i =0; i<firstName.length();i++){
+            if(firstName.charAt(i)<97)
+                throw new NameException("there is a capital letter");
         }
+        s1.setFirstName(s1.getFirstName());
+        s1.setLastName(s1.getLastName());
+        s1.setMark(student.getMark());
+        s1.setAge(student.getAge());
+        studentRepository.save(s1);
         return s1;
     }
 
