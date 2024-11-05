@@ -1,5 +1,6 @@
 package com.SpringCourse.Startup.Security.auth;
 
+import com.SpringCourse.Startup.Security.user.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +16,7 @@ public class RegisterRequest {
     private String lastname;
     private String email;
     private String password;
+    private Role role;
 
 
 }
